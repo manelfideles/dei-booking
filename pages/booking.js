@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { setCookies } from 'cookies-next';
+import Link from 'next/link';
 import Timer from '../components/Timer';
 import Navbar from '../components/Navbar';
 import RoomTable from '../components/RoomTable';
@@ -11,14 +13,9 @@ export default function Booking() {
             '1214': '',
             '1416': '',
             '1618': '',
-            '1820': '',
+            '1820': ''
         }
     });
-
-    useEffect(() => {
-        console.log('re-rendered!');
-        console.log('--', booking);
-    }, [booking])
 
     const timeUntilClosing = (obj) => { Object.values(obj).reduce((a, b) => a + b); }
     function handleTimeLeft(timeLeft) {
@@ -36,7 +33,9 @@ export default function Booking() {
                     <RoomTable roomName='A61' booking={booking} setBooking={setBooking} />
                     <RoomTable roomName='C53' booking={booking} setBooking={setBooking} />
                     <RoomTable roomName='C54' booking={booking} setBooking={setBooking} />
-                    <button id='next' onClick={() => { console.log(booking) }}>Seguinte</button>
+                    <button id='next' onClick={setCookies('ticket', JSON.stringify(booking))}>
+                        <Link href='confirmation'>Seguinte</ Link>
+                    </button>
                 </main>
             </div>
         )
