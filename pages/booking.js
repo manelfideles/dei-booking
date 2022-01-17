@@ -7,8 +7,11 @@ import RoomTable from '../components/RoomTable';
 
 export default function Booking() {
     const [open, setOpen] = useState(true);
+    // @TODO - initial state == bookings que o user fez hoje
+    // bloquear em checked as bookings que ja estao
+    // demasiado proximas, p.ex < 2h de diferenca
     const [booking, setBooking] = useState({
-        // timeSlot: room -> can only be one room per timeSlot
+        // timeSlot: room -> can only be one room per timeSlot per user
         ticket: {
             '1214': '',
             '1416': '',

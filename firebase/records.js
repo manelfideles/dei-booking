@@ -1,4 +1,4 @@
-import { doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { doc, getDoc, setDoc, arrayUnion, runTransaction } from 'firebase/firestore';
 import { db } from './db';
 
 
@@ -69,27 +69,26 @@ async function getTodayData() {
 
 async function updateEnrollments() { }
 
-// @TODO: mudar para transações:
-// - Ler array
-// - Verificar se o email que queremos adicionar não está já no array
-// - Adicionar se não estiver; rejeitar reserva se já estiver.
 async function setReservation(email, ticket) {
     let ticketArray = Object.entries(ticket);
     const today = getReorderedDateStr(new Date().toISOString().split('T')[0], '_');
-    for (let index = 0; index < ticketArray.length; index++) {
-        const item = ticketArray[index];
-        if (item[1]) {
-            await updateDoc(doc(db, 'daily_room_enrollments', today), {
-                [`rooms.${item[1]}.timeSlots.${item[0]}`]: arrayUnion(email)
-            }).then(() => {
-                console.log(item);
-                console.log('Successfully added requested bookings!');
-                return true;
-            }).catch((error) => {
-                console.log('Something went wrong : ', error);
-                return false;
-            })
-        }
+    try {
+        await runTransaction(db, async (transaction) => {
+            for (let index = 0; index < ticketArray.length; index++) {
+                const item = ticketArray[index];
+                if (item[1]) {
+                    transaction.update(doc(db, 'daily_room_enrollments', today), {
+                        [`rooms.${item[1]}.timeSlots.${item[0]}`]: arrayUnion(email)
+                    });
+                    console.log('Successfully added ticket to bookings!');
+                }
+            }
+        });
+        console.log('Successfully updated bookings with user\'s ticket.');
+        return true;
+    } catch (e) {
+        console.log('Something went wrong: ', e);
+        return false;
     }
 }
 
