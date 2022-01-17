@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getTodayData } from "../firebase/records";
+import { getTodayData } from "../lib/records";
 
 
 export default function RoomTable(props) {

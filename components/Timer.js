@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getReorderedDateStr } from "../firebase/records";
+import { getReorderedDateStr } from "../lib/records";
 
 function Timer(props) {
     const calculateTimeLeft = () => {

@@ -1,14 +1,26 @@
+import { useAuth } from "../lib/AuthUserContext";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
-  return (
-    <div>
-      <h1>Home</h1>
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="booking">Booking</a></li>
-        </ul>
-      </nav>
-    </div>
-  )
+  const { authUser } = useAuth();
+
+  if (authUser) {
+    return (
+      <div>
+        <h1>Home</h1>
+        <Navbar />
+        <h1>Bem-vindo {authUser.displayName}</h1>
+      </div>
+    );
+  }
+  else {
+    return (
+      <div>
+        <h1>Home</h1>
+        <Navbar />
+        <h1>Faça login pf</h1>
+      </div>
+    );
+  }
+
 }

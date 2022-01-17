@@ -1,14 +1,16 @@
 import { getCookies } from 'cookies-next';
 import { setReservation } from '../firebase/records';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 export default function Confirmation() {
+    const router = useRouter();
 
     function submitBooking() {
         const ticket = JSON.parse(decodeURIComponent(getCookies('ticket').ticket)).ticket;
         console.log(ticket);
         if (setReservation('ruben@gmail.com', ticket)) {
-            window.location.href = 'success';
+            router.push('/success')
         } else console.log('deu merrrda');
     }
 
