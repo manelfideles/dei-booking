@@ -1,11 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { setCookies } from 'cookies-next';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Timer from '../components/Timer';
 import Navbar from '../components/Navbar';
 import RoomTable from '../components/RoomTable';
+import { useAuth } from '../lib/AuthUserContext';
 
 export default function Booking() {
+    const router = useRouter();
+    const { authUser } = useAuth();
     const [open, setOpen] = useState(true);
     // @TODO - initial state == bookings que o user fez hoje
     // bloquear em checked as bookings que ja estao
@@ -26,6 +30,7 @@ export default function Booking() {
             setOpen(false);
     }
 
+    /* if (authUser) */
     if (open == true) {
         return (
             <div>
@@ -51,4 +56,5 @@ export default function Booking() {
             </div >
         )
     }
+    /* @TODO: redirect para '/' se nao houver user */
 }
