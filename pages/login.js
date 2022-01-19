@@ -7,13 +7,18 @@ export default function Login() {
     const { userSignIn, loading } = useAuth();
     const router = useRouter();
 
+    const onLogin = () => {
+        userSignIn();
+        router.push('/');
+    }
+
     if (loading) return <Loading />;
     else
         return (
             <div>
                 <h1>Login</h1>
                 <Navbar />
-                <button onClick={() => { userSignIn(); router.push('/') }}>Login with Google</button>
+                <button onClick={onLogin}>Login with Google</button>
             </div>
         )
 }

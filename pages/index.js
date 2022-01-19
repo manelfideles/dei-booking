@@ -1,8 +1,10 @@
 import { useAuth } from "../lib/AuthUserContext";
 import Navbar from "../components/Navbar";
+import Loading from "../components/Loading";
 
 export default function Home() {
   const { authUser } = useAuth();
+
   if (authUser) {
     return (
       <div>
