@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { getTodayData } from "../lib/records";
+import { getTomorrowData } from "../lib/records";
 
 
 export default function RoomTable(props) {
     const [state, setState] = useState();
 
     useEffect(() => {
-        getTodayData().then((res) => { setState(res); })
+        getTomorrowData().then((res) => { setState(res); })
     }, []);
 
     const slotString = (slot_name, idx) => {

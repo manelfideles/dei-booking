@@ -52,10 +52,10 @@ exports.dailyJob = functions.pubsub
         let [year, month, day] = [
             dateStr.slice(0, 4),
             dateStr.slice(5, 7),
-            dateStr.slice(8, dateStr.length),
+            parseInt(dateStr.slice(8, dateStr.length)) + 1,
         ];
-        const today = `${day}_${month}_${year}`;
-        const newDoc = db.collection('daily_room_enrollments').doc(today);
+        const tomorrow = `${day}_${month}_${year}`;
+        const newDoc = db.collection('daily_room_enrollments').doc(tomorrow);
         newDoc.set(dailyTemplate)
             .then(() => {
                 console.log('Successfully created.');
