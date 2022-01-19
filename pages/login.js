@@ -1,16 +1,16 @@
 import { useAuth } from "../lib/AuthUserContext";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Loading from "../components/Loading";
-import { useRouter } from "next/router";
 
 export default function Login() {
-    const { userSignIn, loading } = useAuth();
+    const { authUser, userSignIn, loading } = useAuth();
     const router = useRouter();
 
-    const onLogin = () => {
-        userSignIn();
-        router.push('/');
-    }
+    useEffect(() => {
+        if (authUser) router.push('/');
+    }, [authUser])
 
     if (loading) return <Loading />;
     else
@@ -18,7 +18,7 @@ export default function Login() {
             <div>
                 <h1>Login</h1>
                 <Navbar />
-                <button onClick={onLogin}>Login with Google</button>
+                <button onClick={userSignIn}>Login with Google</button>
             </div>
         )
 }

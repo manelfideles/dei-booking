@@ -3,25 +3,26 @@ import Navbar from "../components/Navbar";
 import Loading from "../components/Loading";
 
 export default function Home() {
-  const { authUser } = useAuth();
+  const { authUser, loading } = useAuth();
 
-  if (authUser) {
-    return (
-      <div>
-        <h1>Home</h1>
-        <Navbar />
-        <h1>Bem-vindo {authUser.displayName}</h1>
-      </div>
-    );
-  }
-  else {
-    return (
-      <div>
-        <h1>Home</h1>
-        <Navbar />
-        <h1>Faça login pf</h1>
-      </div>
-    );
-  }
-
+  if (loading) return <Loading />;
+  else
+    if (authUser) {
+      return (
+        <div>
+          <h1>Home</h1>
+          <Navbar />
+          <h1>Bem-vindo {authUser.displayName}</h1>
+        </div>
+      );
+    }
+    else {
+      return (
+        <div>
+          <h1>Home</h1>
+          <Navbar />
+          <h1>Faça login pf</h1>
+        </div>
+      );
+    }
 }
