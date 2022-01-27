@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'Averta';
+    src: url('../public/fonts/AvertaStd-Light.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Averta';
+    src: url('../public/fonts/AvertaStd-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+:root {
+    --dark-blue: #2128BD;
+    --pale-orange: #FDF0E5;
+    --dark-orange: #FC8856;
+
+    --main-font: 'Averta';
+}
+
+* {
+    font-family: var(--main-font);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}

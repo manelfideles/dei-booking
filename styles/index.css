@@ -1,0 +1,30 @@
+#hero {
+    height: 100vh;
+    background-image: url('../public/img/cisuc-duotone-2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#hero div {
+    margin: 8em 0 0 8em;
+}
+
+#hero h1 {
+    font-size: 4em;
+    width: 35%;
+    color: var(--pale-orange);
+}
+
+#hero span {
+    color: var(--dark-orange);
+    text-decoration: underline;
+}
+
+#hero div button {
+    font-size: 1.5em;
+}
+
+#rooms {
+    display: flex;
+}

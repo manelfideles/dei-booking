@@ -1,5 +1,6 @@
 import { useAuth } from "../lib/AuthUserContext";
 import { useRouter } from "next/router";
+import PrimaryBtn from "./PrimaryBtn";
 
 export default function Navbar() {
     const { authUser, userSignOut } = useAuth();
@@ -13,10 +14,10 @@ export default function Navbar() {
     if (authUser) {
         return (
             <nav>
+                <a href="/">dei_booking</a>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="booking">Booking</a></li>
-                    <li><button onClick={onLogout}>Logout</button></li>
+                    <li><PrimaryBtn handler={() => router.push('/booking')} title='Marcar' /></li>
+                    <li><PrimaryBtn handler={onLogout} title='Sair' /></li>
                 </ul>
             </nav>
         )
@@ -25,8 +26,8 @@ export default function Navbar() {
         return (
             <nav>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/login">Login</a></li>
+                    <li><a href="/">dei_booking</a></li>
+                    <li><PrimaryBtn handler={() => { router.push('/login') }} title='Entrar' /></li>
                 </ul>
             </nav>
         )

@@ -1,0 +1,22 @@
+#room-card {
+    border: dotted orange;
+    display: block;
+}
+
+#img-container {
+    border: solid black;
+    width: 70%;
+}
+
+.room-image {
+    border-radius: 40px;
+}
+
+#room-card span {
+    font-size: 2em;
+    font-weight: bold;
+    border: dotted red;
+}
+
+
+

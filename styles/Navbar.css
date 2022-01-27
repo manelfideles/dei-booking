@@ -1,0 +1,26 @@
+nav {
+    padding: 2.5em;
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    font-size: 2em;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--pale-orange);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+nav li {
+    padding: 0 1em;
+}
+
+
+
