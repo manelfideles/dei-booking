@@ -1,0 +1,19 @@
+.amenities-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#am-card-title {
+    text-decoration: underline;
+    font-weight: bold;
+    margin-top: 1em;
+    font-size: 1.25em;
+    color: var(--dark-blue);
+}
+
+#am-card-description {
+    text-align: center;
+    width: 50%;
+}
+

@@ -1,0 +1,8 @@
+.gif-grid {
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 0.5fr);
+    grid-auto-rows: 12em;
+    column-gap: 8em;
+    row-gap: 4em;
+}

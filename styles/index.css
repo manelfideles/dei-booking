@@ -1,5 +1,13 @@
+#rooms, #schedule, #amenities, #contacts {
+    padding-top: 5em;
+}
+
+section h2 {
+    padding: 0 2em;
+    text-align: center;
+}
+
 #hero {
-    height: 100vh;
     background-image: url('../public/img/cisuc-duotone-2.jpg');
     background-position: center;
     background-repeat: no-repeat;
@@ -27,4 +35,55 @@
 
 #rooms {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--pale-orange);
+}
+
+#rooms #card-list {
+    display: flex;
+    margin: 0 1em;
+}
+
+#rooms h2 {
+    font-size: 2.5em;
+    width: 30%;
+    color: var(--dark-blue);
+}
+
+/* canvas {
+    display: block;
+}
+
+.particles {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+} */
+
+#schedule {
+    background: url('../public/img/pattern-clocks-duotone.jpg');
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#schedule h2 {
+    font-size: 2.5em;
+    width: 50%;
+    color: var(--dark-blue);
+    z-index: 2;
+}
+
+#amenities h2, #contacts h2 {
+    font-size: 2.5em;
+    color: var(--dark-blue);
+    z-index: 2;
+}
+
+.am-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 4em;
 }
